@@ -2,7 +2,6 @@
 using namespace std;
 const int mod = 1e5 + 5;
 int n, q;
-
 int a[mod];
 
 int lower(int val, int l, int r){

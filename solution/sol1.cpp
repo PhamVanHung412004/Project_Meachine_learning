@@ -1,27 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
+const int mod = 1e6 + 5;
 int l, r;
-int check(int n){
-    long long total = 0;
-    for (int i = 2; i <= sqrt(n); i++){
-        if (n % i == 0){
-            total += i;
-            if (n / i != i){
-                total += n / i;
-            }
-        }
-        
+long long dp[mod];
+
+
+void check(int n){
+    for (int i = 1; i <= n; i++){
+        dp[i] = 1;
     }
-    
-    total++;
-    return total;
-    
+    dp[1] = 0;
+    for (int i = 2; 2 * i <= n; i++){
+        for (int j = 2 * i; j <= n; j += i){
+            dp[j] += i;
+        }
+    }
 }
 void solve(){
     cin >> l >> r;
+    check(r);
     int cnt = 0;
     for (int i = l; i <= r; i++){
-        cnt += (check(i) > i);
+        cnt += (dp[i] > i);
     }
     cout << cnt;
 }
