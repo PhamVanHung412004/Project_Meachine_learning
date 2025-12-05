@@ -4,13 +4,13 @@ const int mod = 3 * 1e6 + 5;
 int l, r;
 long long dp[mod];
 
-void check(int n){
-    for (int i = 1; i <= n; i++){
+void check(){
+    for (int i = 1; i <= mod; i++){
         dp[i] = 1;
     }
     dp[1] = 0;
-    for (int i = 2; 2 * i <= n; i++){
-        for (int j = 2 * i; j <= n; j += i){
+    for (int i = 2; 2 * i <= mod; i++){
+        for (int j = 2 * i; j <= mod; j += i){
             dp[j] += i;
         }
     }
@@ -18,7 +18,7 @@ void check(int n){
 
 void solve(){
     cin >> l >> r;
-    check(r);
+    check();
     int cnt = 0;
     for (int i = l; i <= r; i++){
         cnt += (dp[i] > i);
@@ -27,9 +27,10 @@ void solve(){
 }
 
 int main(){
-    ios_base::sync_with_stdio(0);cin.tie(0);cin.tie(0);
+    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
     freopen("SPECIAL.INP","r", stdin);
     freopen("SPECIAL.OUT", "w", stdout);
     solve();
     return 0;
+
 }

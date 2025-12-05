@@ -34,56 +34,21 @@ void solve(){
 
     for (int i = 2; i <= n; i++){
         for (int j = 2; j <= m; j++){
-            // if (dp[i - 1][j] == 0 || dp[i][j - 1] == 0){
-            //     continue;
-            // }
-            // else{
-            long long tmp = max(dp[i - 1][j],dp[i][j - 1]);
-            tmp += dp[i][j];
-            dp[i][j] = tmp;
-            // }
+            if (dp[i - 1][j] == 0 || dp[i][j - 1] == 0){
+                continue;
+            }
+            else{
+                long long tmp = max(dp[i - 1][j],dp[i][j - 1]);
+                tmp += dp[i][j];
+                dp[i][j] = tmp;
+            }
         }
     }
-    
-    cout << dp[n][m] << " " << a[n][m]; 
-    // for (int i = 1; i <= n; i++){
-    //     for (int j = 1; j <= m; j++){
-    //         cout << a[i][j] << " ";
-    //     }
-    //     cout << '\n';
-    // }
-    
-    // cout << "-----------------------------\n";
-    // for (int i = 1; i <= n; i++){
-    //     for (int j = 1; j <= m; j++){
-    //         cout << dp[i][j] << " ";
-    //     }
-    //     cout << '\n';
-    // }
-
-
     cout << (dp[n][m] != a[n][m])? dp[n][m] : 0;
-    // if (dp[n][m] != a[n][m]){
-    //     cout << dp[n][m];
-    // }
-    // else
-
-    // for (int i = 1; i <= n; i++){
-    //     for (int j = 1; j <= m; j++){
-    //         cout << dp[i][j] << " ";
-    //     }
-    //     cout << '\n';
-    // }
-    // if (dp[m])
-    
-    // cout << dp[n][m];
 }
 
 int main(){
     ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-    // freopen("pmax.inp","r", stdin);
-    // freopen("pmax.out", "w", stdout);
     solve();
-
     return 0;
 }
